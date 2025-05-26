@@ -75,7 +75,7 @@ const Home = () => {
       setUsuarios(usuarios.map(u => (u.id === usuario.id ? usuario : u)));
     } else {
       // Crear nuevo usuario, sin enviar id
-      const { id, ...usuarioSinId } = usuario;
+      const { id: _, ...usuarioSinId } = usuario;
       const response = await axios.post('http://localhost:3000/api/usuarios/registro', usuarioSinId, axiosConfig);
 
       // response.data debería incluir el id nuevo, si configuras así el backend

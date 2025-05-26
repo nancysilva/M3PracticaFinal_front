@@ -33,7 +33,7 @@ const UsuarioFormDialog = ({ open, onClose, onSave, usuarioEditando }) => {
     }
 
     if (usuarioEditando && usuario.contrasena === '') {
-      const { contrasena, ...usuarioSinContrasena } = usuario;
+      const { contrasena: _, ...usuarioSinContrasena } = usuario;
       onSave(usuarioSinContrasena);
     } else {
       onSave(usuario);
