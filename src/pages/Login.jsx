@@ -11,7 +11,7 @@ export default function Login({ setIsAuthenticated }) {
     e.preventDefault();
 
     try {
-      const res = await fetch('http://localhost:3000/api/usuarios/login', {
+      const res = await fetch('https://pymex.azurewebsites.net/api/usuarios/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

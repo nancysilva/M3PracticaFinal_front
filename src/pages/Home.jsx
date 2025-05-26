@@ -24,7 +24,7 @@ const Home = () => {
   // Cargar usuarios desde backend
   const fetchUsuarios = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/usuarios', axiosConfig);
+      const response = await axios.get('https://pymex.azurewebsites.net/api/usuarios', axiosConfig);
       setUsuarios(response.data);
     } catch (error) {
       console.error('Error al obtener usuarios:', error);
@@ -55,7 +55,7 @@ const Home = () => {
   // Eliminar usuario desde backend y actualizar estado
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/api/usuarios/${id}`, axiosConfig);
+      await axios.delete(`https://pymex.azurewebsites.net/api/usuarios/${id}`, axiosConfig);
       setUsuarios(usuarios.filter(u => u.id !== id));
     } catch (error) {
       console.error('Error al eliminar usuario:', error);
@@ -70,13 +70,13 @@ const Home = () => {
 
     if (usuario.id) {
       // Actualizar usuario existente
-      await axios.put(`http://localhost:3000/api/usuarios/${usuario.id}`, usuario, axiosConfig);
+      await axios.put(`https://pymex.azurewebsites.net/api/usuarios/${usuario.id}`, usuario, axiosConfig);
       // Actualiza el usuario en el estado local
       setUsuarios(usuarios.map(u => (u.id === usuario.id ? usuario : u)));
     } else {
       // Crear nuevo usuario, sin enviar id
       const { id: _, ...usuarioSinId } = usuario;
-      const response = await axios.post('http://localhost:3000/api/usuarios/registro', usuarioSinId, axiosConfig);
+      const response = await axios.post('https://pymex.azurewebsites.net/api/usuarios/registro', usuarioSinId, axiosConfig);
 
       // response.data debería incluir el id nuevo, si configuras así el backend
       const nuevoId = response.data.id;
